@@ -1,0 +1,14 @@
+.card {
+  vertical-align: top;
+  display: inline-block;
+}
+.card .content {
+  text-align: center;
+}
+.card .align {
+  width: 100%;
+  max-width: calc(1200px / 3 / 2);
+  text-align: left;
+}
+
+/*# sourceMappingURL=cards-base.css.map */

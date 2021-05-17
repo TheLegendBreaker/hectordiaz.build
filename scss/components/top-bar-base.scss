@@ -1,0 +1,4 @@
+@use '../components-base' as base;
+#top-bar {
+	@include base.top-bar-styles;
+}

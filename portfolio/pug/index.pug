@@ -1,0 +1,31 @@
+extends /var/www/build/pug/layout.pug
+block body
+
+	- var cardOptions = {}
+	- cardOptions['cta'] = {'target':'#','message':'CALL TO ACTION'}
+
+	+heroBanner('hero')
+		+card('banner caption',cardOptions)
+			p hero caption text
+
+	+threeCardSection('building')
+
+		+card('card title',options=cardOptions)(id="test")
+			p test article message
+
+		- cardOptions['img'] = {'src':'somewhere','alt':'alt text','caption':'testing figcaption.'}
+		+graphicCard('graphic card', options=cardOptions)(id="graphics")
+			p testing graphic card body
+
+	+pageSection('test-section')
+		+ singleCard('single card title',options=cardOptions)
+			p test article message
+
+block head
+	+ pageBaseStyles
+	+ cardBaseStyles
+	+ threeCardBaseStyles
+	+ heroBaseStyles
+	+ topbarBaseStyles
+	+ containerBaseStyles
+	+ singleCardBaseStyles

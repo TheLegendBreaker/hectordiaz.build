@@ -1,0 +1,4 @@
+@use '../components-base' as base;
+.container {
+	@include base.container-styles;
+}

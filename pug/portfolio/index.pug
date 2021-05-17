@@ -1,0 +1,75 @@
+extends ../layout.pug
+block body
+
+	- var cardOptions = {}
+	- cardOptions['cta'] = {'target':'#','message':'CALL TO ACTION'}
+
+	+heroBanner('hero')(class="sr-title container-center-xy")
+		.split-40
+			+ logoMark
+		.split-60
+			+newCard
+				p.tagline
+					strong
+						span Hector Diaz : Web Developer
+						|<br/>
+						|Beautiful Websites
+						|<br/>
+						|Happy Clients
+				+cardBody('Example')
+					p
+						| The teams I join soon find project timelines becoming shorter, and client satisfaction growing.
+						br
+						br
+						| Let's meet to see if we would be a good fit.
+					.cta-container.stack
+						+cta('#folio')
+							span View Portfolio
+						+cta('#contact')
+							span Contact Hector
+					//-.cta.container.stack
+
+	+pageSection('Portfolio')(id="folio")
+		- cardOptions['src']= '/clients/UnionBaptist_About.png'
+		- cardOptions['alt']= '/clients/UnionBaptist_About.png'
+
+		+newCard.flip.six-four-split
+			+newcardGraphic(cardOptions)
+			.main
+				+cardBody('Example')
+					p something that is something when something happened. I don't know, but it sure was something.
+				+cta('#')
+					Hey try this!
+
+		+newCard
+			+newcardGraphic(cardOptions)
+			.main
+				+cardBody('Example')
+					p something that is something when something happened. I don't know, but it sure was something.
+				+cta('#')
+					Hey try this!
+
+		+newCard
+			+newcardGraphic(cardOptions)
+			.main
+				+cardBody('Example')
+					p something that is something when something happened. I don't know, but it sure was something.
+				+cta('#')
+					Hey try this!
+
+		+newCard
+			+newcardGraphic(cardOptions)
+			.main
+				+cardBody('Example')
+					p something that is something when something happened. I don't know, but it sure was something.
+				+cta('#')
+					Hey try this!
+
+block styles
+	+ cardBaseStyles
+	+ threeCardBaseStyles
+	+ heroBaseStyles
+	+ topbarBaseStyles
+	+ containerBaseStyles
+	+ singleCardBaseStyles
+	+ graphicCardBaseStyles

@@ -1,0 +1,289 @@
+// base
+
+*{ 
+	box-sizing: border-box; 
+	font-family: Helvetica, Arial, Sans, 'Open Sans';
+	scroll-behavior: smooth;
+	outline: dotted 1px aqua;
+	}
+body {
+	margin: 0;
+	overflow-x: hidden;
+	background-color: #333; width: 100vw;
+} 
+#main-nav,#gsd, footer {
+	max-width:375px;
+	width: 100vw;
+}
+#main-nav {
+	background-color: #f4f4f4;
+	min-height: 33px;
+	.container {
+		position: fixed;
+		text-align: right;
+		top: 0;
+		left: calc(50vw - (375px/2));
+		z-index: 100;
+		background-color: inherit;
+		width: inherit;
+		max-width: inherit;
+	}
+	label {
+		display: inline-block;
+	}
+	label span {
+		padding-top: calc((30px /2) - (17px/2));
+	}
+	ul {
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		left: calc(50vw - (375px/2));
+		z-index: -10;
+	}
+}
+#main-nav,#gsd, footer {
+	max-width:375px;
+	width: 100vw;
+}
+#gsd{
+	padding-top: 30px;
+	padding-bottom: 40px;
+	background-color: #f4f4f4;
+	min-height: 100vh;
+	position: relative;
+}
+.justify-center {
+	margin-left: auto;
+	margin-right: auto;
+}
+.search {
+	width: 80%;
+}
+.title.container {
+	text-align: center;
+}
+.define-done {
+	display: inline-block;
+	max-width: 80%;
+	width: 100vw;
+	text-align: left;
+	margin:10px 0;
+}
+.recall-title {
+	margin: 0;
+}
+.recall-title select { 
+	font-size: inherit;
+	text-transform: capitalize;
+	}
+h1,h2,h3,h4 {
+	font-weight: 500;
+}
+section>h2 {
+	margin: 0;
+	text-align: center
+}
+
+// util
+// split
+
+*[class*="split-em"]>*, .split {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.split-em.even>*,
+.half 
+{
+	width: 50%;
+	max-width: calc(1200px * .45);
+}
+
+.split-em.thirds>*{
+	width: 33%;
+	max-width: calc(1200px * .33);
+}
+
+.split-em.thirds> :nth-child(2){
+	margin: 0 .5%;
+	}
+
+.split.two,
+.split-em.two-eight> :nth-child(1),
+.split-em.two-eight-two > :nth-child(1),
+.split-em.two-eight-two > :nth-last-child(1) {
+	width: calc(100% * .2);
+	max-width: calc(1200px * .2);
+}
+
+.split.eight,.split-em.two-eight>:nth-child(2){
+	width: calc(100% * .8);
+	max-width: calc(1200px * .8);
+}
+
+.split-em.eight-two>:nth-child(2), .split-em-end.eight-two>:nth-last-child(1) {
+	width: calc(100% * .2);
+	max-width: calc(1200px * .2);
+}
+
+.split-em.six-two>:nth-child(2),
+.split-em-end.six-two>:nth-last-child(1)
+.split-em.two-six-two > :nth-child(1)
+{
+	width: calc(100% * .2);
+	max-width: calc(1200px * .2);
+}
+
+.split-em.six-two>:nth-child(1),
+.split-em-end.six-two>:nth-last-child(2),
+.split-em.two-six-two > :nth-last-child(2),
+.split-em.two-six-two > :nth-child(2)
+{
+	width: calc(100% * .6);
+	max-width: calc(1200px * .6);
+}
+.split-em.eight-two>:nth-child(1),
+.split-em-end.eight-two>:nth-last-child(2),
+.split-em.two-eight-two > :nth-child(2)
+{
+	width: calc(100% * .8);
+	max-width: calc(1200px * .8);
+}
+
+.split-em.four-six>:nth-child(1){
+	width: 40%;
+}
+
+.split-em.four-six>:nth-child(2){
+	width: 55%;
+}
+
+.split.quarter {
+	width: calc(100% * .25);
+	max-width: calc(1200px * .25);
+}
+
+.split.three-quarter {
+	width: calc(100% * .75);
+	max-width: calc(1200px * .75);
+}
+
+// end split
+// component parts
+
+.hide {
+	// requires .pos-abso or another position absolute class.
+	// also needs a tranistion class for appropraite animation.
+	opacity: 0;
+	height: 0;
+}
+
+// end component parts
+// end utl
+// element config
+
+button {
+	border: none;
+	padding: calc(15px * .5);
+}
+
+// form elements
+
+.sr-label > span {
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+label {
+
+	display: block;
+	position: relative;
+	span {
+		text-align: left;
+	}
+	input {
+		width: 100%;
+		&[type="radio"]{
+			margin: 0;
+		}
+	}
+	select {
+		width: 100%;
+		text-align: center;
+	}
+}
+textarea {
+	margin: 0;
+	font-size: .8em;
+	width: 100%;
+	max-width: 100%;
+	min-height: 30px;
+}
+
+// end form elements
+
+footer {
+	position: fixed;
+	bottom: 0;
+	left: calc(50vw - (375px/2));
+	background-color: #f4f4f4;
+	.add-item {
+		width: 100%;
+	}
+}
+
+time {
+	font-size: 12px;
+}
+
+// end element config
+
+section .container {
+	max-width: 90%;
+}
+
+// end base
+// components
+
+.modal {
+	background: rgba(#fff, .8);
+	width: 100%;
+	max-width: 375px;
+	top: 0px;
+	z-index: 100;
+	.modal-container {
+		height: 60vh;
+	}
+}
+// custom elements
+
+.add-item {
+	&.hide {
+		z-index: -1;
+	}
+	.title-container {
+		text-align: center;
+	}
+	.modal-container {
+		form {
+			height: inherit;
+			label {
+				height: calc(100% - 33px);
+				textarea {
+					height: 100%;
+				}
+			}
+			button {
+				width: 100%;
+			}
+		}
+	}
+}
+
+
+// custom elements
+// end components

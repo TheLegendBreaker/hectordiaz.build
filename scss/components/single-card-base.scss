@@ -1,0 +1,4 @@
+@use '../components-base' as base;
+.card.single {
+	@include base.single-card-styles;
+}

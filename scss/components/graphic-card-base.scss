@@ -1,0 +1,6 @@
+@use '../components-base' as base;
+.card.single {
+	figure {
+		@include base.graphic-card-styles;
+	}
+}

@@ -1,0 +1,4 @@
+@use '../components-base' as base;
+#hero {
+	@include base.hero-styles;
+}

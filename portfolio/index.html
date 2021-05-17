@@ -1,0 +1,155 @@
+<!-- variables--><!-- end variables--><!-- util--><!-- end util--><!-- components--><!-- cards--><!-- end cards--><!-- buttons--><!-- end buttons--><!-- end components--><!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="style.css"><style>*{ 
+	box-sizing: border-box; 
+	font-family: Helvetica, Arial, Sans, 'Open Sans';
+	scroll-behavior: smooth;
+	}
+body {
+	padding: 0 30px;
+	margin: 0;
+	overflow-x: hidden;
+	background: #f4f4f4;
+} 
+#top-bar h1, #top-bar h2 {
+	font-size: 1em;
+	font-weight: normal;
+	margin: 0;
+}
+.card {
+width: 100%;
+}
+.sr-title .title {
+	opacity:0;position:absolute;top:0;left:0;
+	}
+*[class*=split-], *[class*=-split] .content, *[class*=-split] figure {
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+}
+.split-60, .six-four-split .content {
+	min-width: 250px;
+	width: 55%;
+	max-width: calc(1200px * .55);
+}
+.split-60+.split-40 {
+	left: 0;
+}
+.split-40+.split-60 {
+	left: calc(1200px * .35);
+}
+.split-40, .six-four-split figure {
+	max-width: calc(1200px * .35);
+	width: 35%;
+	margin: 0;
+}
+.cta-container.stack .btn.cta {
+	display: block;
+	margin: 15px 0;
+}
+.tagline {
+	font-size: 2em;
+}
+.tagline span {
+	font-weight: 500;
+	}
+.card-container + .card-container {
+	padding: 40px 0;
+}
+figure {
+	margin: 0;
+}
+.crop {
+	overflow: hidden;
+	max-height: 200px;
+}
+.crop img {
+	height: auto;
+	width: 100%;
+}
+</style><style>.card {
+  vertical-align: top;
+  display: inline-block;
+}
+.card .content {
+  text-align: center;
+}
+.card .align {
+  width: 100%;
+  max-width: calc(1200px / 3 / 2);
+  text-align: left;
+}
+
+/*# sourceMappingURL=cards-base.css.map */
+.three-cards .card {
+  max-width: calc(1200px / 3);
+  width: calc(100vw - 30px * 2);
+}
+
+/*# sourceMappingURL=three-cards-base.css.map */
+#hero {
+  width: calc(100vw - 30px * 2);
+  height: calc( 100vh - 120px );
+  margin-top: 100px;
+}
+
+/*# sourceMappingURL=hero-base.css.map */
+#top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 40px;
+  background: #fff;
+}
+#top-bar .container {
+  padding: 15px 30px;
+  position: relative;
+}
+#top-bar .half {
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+  max-width: calc(1200px / 2 - 30px);
+}
+#top-bar .half:nth-child(2) {
+  text-align: right;
+}
+#top-bar .half #main-nav ul {
+  position: absolute;
+  right: 30px;
+  top: 100%;
+}
+
+/*# sourceMappingURL=top-bar-base.css.map */
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*# sourceMappingURL=container-base.css.map */
+.card.single {
+  width: 100%;
+}
+.card.single .align {
+  max-width: calc(1200px / 2);
+}
+
+/*# sourceMappingURL=single-card-base.css.map */
+.card.single figure .crop {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  max-height: 200px;
+}
+.card.single figure .crop img {
+  width: 100%;
+  height: auto;
+}
+
+/*# sourceMappingURL=graphic-card-base.css.map */
+</style><title>Hector Diaz, Web Developer</title></head><body><header id="top-bar"><div class="container"><div class="half"><div id="flag-post">Hector's Web Portfolio</div></div><div class="half"><nav id="main-nav"><h2>Navigation Menu</h2><ul style="list-style:none;margin:0;"><li><a href="#">Resume</a></li><li><a href="#">Contact</a></li><li><a href="#">Portfolio</a></li><li><a href="#">Blog</a></li></ul></nav></div></div></header><section class="sr-title container-center-xy" id="hero"><h2 class="title container"><span>hero</span></h2><div class="container"><div class="split-40"><div class="logo-container" style=" position:relative;max-width:200px;max-height:200px;width:33vw;height:33vw;  "><div class="mark" style="mask:url(hector-diaz-full-stack-web-developer-and-accessibility-specialist-for-hire-logo.svg);-webkit-mask-image:url(hector-diaz-full-stack-web-developer-and-accessibility-specialist-for-hire-logo.svg);mask-size:100%;-webkit-mask-size:100%;position:absolute;top:0;left:0;width:100%;height:100%;"><div class="holo-bg" style="background-color:aqua;position:absolute;top:0;left:0;width:100%;height:100%;"></div></div></div></div><div class="split-60"><div class="card-container"><article class="card"><p class="tagline"><strong><span>Hector Diaz : Web Developer</span><br/>
+Beautiful Websites
+<br/>
+Happy Clients</strong></p><h2 class="title"><span class="align">Example</span></h2><div class="content"><div class="align"><p>The teams I join soon find project timelines becoming shorter, and client satisfaction growing.<br><br>Let's meet to see if we would be a good fit.</p><div class="cta-container stack"><a class="btn cta" href="#folio"><span>View Portfolio</span></a><a class="btn cta" href="#contact"><span>Contact Hector</span></a></div></div></div></article></div></div></div></section><section id="folio"><h2 class="title container"><span>Portfolio</span></h2><div class="container"><div class="card-container flip six-four-split"><article class="card"><figure><div class="crop"><img src="/clients/UnionBaptist_About.png" alt="/clients/UnionBaptist_About.png"/></div></figure><div class="main"><h2 class="title"><span class="align">Example</span></h2><div class="content"><div class="align"><p>something that is something when something happened. I don't know, but it sure was something.</p></div></div><a class="btn cta" href="#"><Hey>try this!</Hey></a></div></article></div><div class="card-container"><article class="card"><figure><div class="crop"><img src="/clients/UnionBaptist_About.png" alt="/clients/UnionBaptist_About.png"/></div></figure><div class="main"><h2 class="title"><span class="align">Example</span></h2><div class="content"><div class="align"><p>something that is something when something happened. I don't know, but it sure was something.</p></div></div><a class="btn cta" href="#"><Hey>try this!</Hey></a></div></article></div><div class="card-container"><article class="card"><figure><div class="crop"><img src="/clients/UnionBaptist_About.png" alt="/clients/UnionBaptist_About.png"/></div></figure><div class="main"><h2 class="title"><span class="align">Example</span></h2><div class="content"><div class="align"><p>something that is something when something happened. I don't know, but it sure was something.</p></div></div><a class="btn cta" href="#"><Hey>try this!</Hey></a></div></article></div><div class="card-container"><article class="card"><figure><div class="crop"><img src="/clients/UnionBaptist_About.png" alt="/clients/UnionBaptist_About.png"/></div></figure><div class="main"><h2 class="title"><span class="align">Example</span></h2><div class="content"><div class="align"><p>something that is something when something happened. I don't know, but it sure was something.</p></div></div><a class="btn cta" href="#"><Hey>try this!</Hey></a></div></article></div></div></section><footer><h2>footer</h2></footer></body></html>

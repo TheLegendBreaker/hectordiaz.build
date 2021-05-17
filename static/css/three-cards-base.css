@@ -1,0 +1,6 @@
+.three-cards .card {
+  max-width: calc(1200px / 3);
+  width: calc(100vw - 30px * 2);
+}
+
+/*# sourceMappingURL=three-cards-base.css.map */

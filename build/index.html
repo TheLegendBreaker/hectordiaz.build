@@ -1,0 +1,189 @@
+<!-- variables--><!-- end variables--><!-- util--><!-- end util--><!-- components--><!-- cards--><!-- end cards--><!-- buttons--><!-- end buttons--><!-- end components--><!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="style.css"><style>*{ 
+	box-sizing: border-box; 
+	font-family: Helvetica, Arial, Sans, 'Open Sans';
+	scroll-behavior: smooth;
+	}
+body {
+	padding: 0 30px;
+	margin: 0;
+	overflow-x: hidden;
+} .sr-title .title {
+	opacity:0;position:absolute;top:0;left:0;
+	}
+*[class*=split-], *[class*=-split] .content, *[class*=-split] figure {
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+}
+.split-60, .six-four-split .content {
+	max-width: calc(1200px * .55);
+}
+.split-60+.split-40 {
+	left: 0;
+}
+.split-40+.split-60 {
+	left: calc(1200px * .35);
+}
+.split-40, .six-four-split figure {
+	max-width: calc(1200px * .35);
+	margin: 0;
+}
+.cta.container.stack .btn.cta {
+	display: block;
+	margin: 15px 0;
+}
+</style><style></style><title>Hector Diaz, Web Developer</title></head><body><header id="top-bar"><div class="container"><div class="half"><div class="logo">Hector's Web Portfolioad</div></div><div class="half"><nav><ul style="list-style:none;margin:0;"><li><a href="#">Resume</a></li><li><a href="#">Contact</a></li><li><a href="#">Portfolio</a></li><li><a href="#">Blog</a></li></ul></nav></div></div></header><div class="card-container"><article class="card"><figure><div class="crop"><img src="" alt=""></div><figcaption>It sure is a thing, a great big something.</figcaption></figure><div class="main"><h2 class="title"><span class="align">Example</span></h2><div class="content"><div class="align"><p>something that is something when something happened. I don't know, but it sure was something.</p></div></div><div class="cta-container"><a class="btn cta" href="#">Do this thing.</a></div></div></article></div><div class="card-container"><article class="card"><figure><div class="crop"></div></figure><div class="main"><h2 class="title"><span class="align">Example</span></h2><div class="content"><div class="align"><p>something that is something when something happened. I don't know, but it sure was something.</p></div></div><div class="cta-container"><a class="btn cta" href="#">Hey try this!</a></div></div></article></div><h2 class="card team-member accordion-button">
+<button >
+<span class="circle-img">
+<img src="/wp-content/uploads/2020/11/Icons-08.png" alt="C.A.R.E. Team member profile picture">
+</span>
+<strong class="title">
+<span> team member name </span>
+<small> member title </small>
+</strong>
+</button>
+</h2><style>.accordion-content {
+	opacity: 0;
+}
+.accordion-content.show {
+	opacity: 1;
+}</style><div class="accordion-content">
+<article>
+<h2 class="title">
+<span> team member name </span>
+<small> member title </small>
+</h2>
+<p><job>description job description job description job description job description job description job description job description job description job description </job></p>
+</article>
+</div>
+<h2 class="card team-member accordion-button">
+<button >
+<span class="circle-img">
+<img src="/wp-content/uploads/2020/11/Icons-08.png" alt="C.A.R.E. Team member profile picture">
+</span>
+<strong class="title">
+<span> team member name 2 </span>
+<small> member title  2</small>
+</strong>
+</button>
+</h2><style>.accordion-content {
+	opacity: 0;
+}
+.accordion-content.show {
+	opacity: 1;
+}</style><div class="accordion-content">
+<article>
+<h2 class="title">
+<span> team member name 2 </span>
+<small> member title  2</small>
+</h2>
+<p><job>description job description job description job description job description job description job description job description job description job description </job></p>
+</article>
+</div>
+<h2 class="card team-member accordion-button">
+<button >
+<span class="circle-img">
+<img src="/wp-content/uploads/2020/11/Icons-08.png" alt="C.A.R.E. Team member profile picture">
+</span>
+<strong class="title">
+<span> team member name 3 </span>
+<small> member title  3</small>
+</strong>
+</button>
+</h3><style>.accordion-content {
+	opacity: 0;
+}
+.accordion-content.show {
+	opacity: 1;
+}</style><div class="accordion-content">
+<article>
+<h3 class="title">
+<span> team member name 3 </span>
+<small> member title  3</small>
+</h2>
+<p><job>description job description job description job description job description job description job description job description job description job description </job></p>
+</article>
+</div><script>ready = function(fn) {
+	if(document.readyState === "complete" || document.readyState === "interactive") {
+		window.setTimeout(fn,1);
+	} else {
+			document.addEventListener("DOMContentLoaded",fn);
+		}
+}
+
+getAllAccordionBtns = function() {
+	const btns = document.querySelectorAll('.accordion-button');
+	return btns;
+}
+
+getAllAccordionContent = function() {
+	const allContent = document.querySelectorAll('.accordion-content');
+	return allContent;
+}
+
+isContent = function(content,btn) {
+	const title = String( content.querySelector('.title').innerText ).trim();
+	const btnTitle = String( btn.innerText ).trim();
+	const isContent = ( btnTitle == title );
+	return isContent;
+}
+
+_showAccordionContent = function(content) {
+	content.classList.add('show');
+};
+
+hideAccordionContent = function(content) {
+	content.classList.remove('show');
+};
+
+isContentShowing = function(content) {
+	return content.classList.contains('show');
+}
+
+_hideShowingContent = function(content) {
+	if (isContentShowing(content)){
+		hideAccordionContent(content);
+	}
+}
+
+hideShowingContent = function(allContent) {
+	allContent.forEach(content => {_hideShowingContent(content)});
+}
+
+getButtonContent = function(button) {
+	const AllContent = getAllAccordionContent();
+	for(const content of AllContent) {
+		if(isContent(content, button)){
+			return [ content, AllContent ]
+			};
+		};
+}
+
+showAccordionContent = function(button) {
+	console.log('btn clicked');
+	const contents = getButtonContent(button),
+	allContent = contents[1],
+	content = contents[0];
+
+	hideShowingContent(allContent);
+	// this should be a toggle content function.
+	_showAccordionContent(content);
+}
+
+accordionBtnAddActions = function() {
+ const btns = getAllAccordionBtns();
+ btns.forEach(btn=>btn.addEventListener('click',()=>showAccordionContent(btn)));
+
+}
+
+// test area
+ready(function() {
+
+		let button = document.querySelector('.accordion-button');
+		let content = document.querySelector('.accordion-content');
+		let allContent = getAllAccordionContent();
+		console.log(showAccordionContent(button));
+		accordionBtnAddActions();
+
+	});
+// end test area</script></body><footer><h2>footer</h2></footer></html>

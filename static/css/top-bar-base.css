@@ -1,0 +1,28 @@
+#top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 40px;
+  background: #fff;
+}
+#top-bar .container {
+  padding: 15px 30px;
+  position: relative;
+}
+#top-bar .half {
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+  max-width: calc(1200px / 2 - 30px);
+}
+#top-bar .half:nth-child(2) {
+  text-align: right;
+}
+#top-bar .half #main-nav ul {
+  position: absolute;
+  right: 30px;
+  top: 100%;
+}
+
+/*# sourceMappingURL=top-bar-base.css.map */

@@ -1,0 +1,4 @@
+@use '../components-base' as base;
+.three-cards .card {
+	@include base.three-card-styles;
+}

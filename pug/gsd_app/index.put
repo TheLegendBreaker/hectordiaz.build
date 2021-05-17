@@ -1,0 +1,178 @@
+extends layout.pug
+block body
+	
+	<h2 class="card team-member accordion-button">
+		<button >
+			<span class="circle-img">
+				<img src="/wp-content/uploads/2020/11/Icons-08.png" alt="C.A.R.E. Team member profile picture">
+			</span>
+			<strong class="title">
+				<span> team member name </span>
+				<small> member title </small>
+			</strong>
+		</button>
+	</h2>
+	style.
+		.accordion-content {
+			opacity: 0;
+		}
+		.accordion-content.show {
+			opacity: 1;
+		}
+	<div class="accordion-content">
+		<article>
+			<h2 class="title">
+				<span> team member name </span>
+				<small> member title </small>
+			</h2>
+			<p>
+			job description job description job description job description job description job description job description job description job description job description 
+			</p>
+		</article>
+	</div>
+
+	<h2 class="card team-member accordion-button">
+		<button >
+			<span class="circle-img">
+				<img src="/wp-content/uploads/2020/11/Icons-08.png" alt="C.A.R.E. Team member profile picture">
+			</span>
+			<strong class="title">
+				<span> team member name 2 </span>
+				<small> member title  2</small>
+			</strong>
+		</button>
+	</h2>
+	style.
+		.accordion-content {
+			opacity: 0;
+		}
+		.accordion-content.show {
+			opacity: 1;
+		}
+	<div class="accordion-content">
+		<article>
+			<h2 class="title">
+				<span> team member name 2 </span>
+				<small> member title  2</small>
+			</h2>
+			<p>
+			job description job description job description job description job description job description job description job description job description job description 
+			</p>
+		</article>
+	</div>
+
+	<h2 class="card team-member accordion-button">
+		<button >
+			<span class="circle-img">
+				<img src="/wp-content/uploads/2020/11/Icons-08.png" alt="C.A.R.E. Team member profile picture">
+			</span>
+			<strong class="title">
+				<span> team member name 3 </span>
+				<small> member title  3</small>
+			</strong>
+		</button>
+	</h3>
+	style.
+		.accordion-content {
+			opacity: 0;
+		}
+		.accordion-content.show {
+			opacity: 1;
+		}
+	<div class="accordion-content">
+		<article>
+			<h3 class="title">
+				<span> team member name 3 </span>
+				<small> member title  3</small>
+			</h2>
+			<p>
+			job description job description job description job description job description job description job description job description job description job description 
+			</p>
+		</article>
+	</div>
+
+	script.
+		ready = function(fn) {
+			if(document.readyState === "complete" || document.readyState === "interactive") {
+				window.setTimeout(fn,1);
+			} else {
+					document.addEventListener("DOMContentLoaded",fn);
+				}
+		}
+
+		getAllAccordionBtns = function() {
+			const btns = document.querySelectorAll('.accordion-button');
+			return btns;
+		}
+
+		getAllAccordionContent = function() {
+			const allContent = document.querySelectorAll('.accordion-content');
+			return allContent;
+		}
+
+		isContent = function(content,btn) {
+			const title = String( content.querySelector('.title').innerText ).trim();
+			const btnTitle = String( btn.innerText ).trim();
+			const isContent = ( btnTitle == title );
+			return isContent;
+		}
+
+		_showAccordionContent = function(content) {
+			content.classList.add('show');
+		};
+
+		hideAccordionContent = function(content) {
+			content.classList.remove('show');
+		};
+
+		isContentShowing = function(content) {
+			return content.classList.contains('show');
+		}
+
+		_hideShowingContent = function(content) {
+			if (isContentShowing(content)){
+				hideAccordionContent(content);
+			}
+		}
+
+		hideShowingContent = function(allContent) {
+			allContent.forEach(content => {_hideShowingContent(content)});
+		}
+
+		getButtonContent = function(button) {
+			const AllContent = getAllAccordionContent();
+			for(const content of AllContent) {
+				if(isContent(content, button)){
+					return [ content, AllContent ]
+					};
+				};
+		}
+
+		showAccordionContent = function(button) {
+			console.log('btn clicked');
+			const contents = getButtonContent(button),
+			allContent = contents[1],
+			content = contents[0];
+
+			hideShowingContent(allContent);
+			// this should be a toggle content function.
+			_showAccordionContent(content);
+		}
+
+		accordionBtnAddActions = function() {
+		 const btns = getAllAccordionBtns();
+		 btns.forEach(btn=>btn.addEventListener('click',()=>showAccordionContent(btn)));
+
+		}
+
+		// test area
+		ready(function() {
+
+				let button = document.querySelector('.accordion-button');
+				let content = document.querySelector('.accordion-content');
+				let allContent = getAllAccordionContent();
+				console.log(showAccordionContent(button));
+				accordionBtnAddActions();
+
+			});
+		// end test area

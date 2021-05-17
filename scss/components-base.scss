@@ -1,0 +1,119 @@
+// mixins
+@use 'mixins';
+@use 'brand';
+@use 'theme';
+
+// base component styles
+
+@mixin full-width {
+	width:calc(100vw - #{theme.$site-margin} * 2);
+}
+
+@mixin body-styles {
+	margin:0;
+	max-width:100vw;
+	padding:0 $site-margin;
+}
+
+@mixin top-bar-styles {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 40px;
+	background: #fff;
+	.container {
+		padding: 15px 30px;
+		position: relative;
+	}
+	.half {
+		width: 50%;
+		display: inline-block;
+		vertical-align: top;
+		max-width: calc(1200px / 2 - #{theme.$site-margin});
+
+		&:nth-child(2) {
+			text-align : right;
+		}
+		#main-nav {
+			ul{
+				position: absolute;
+				right: 30px;
+				top: 100%;
+			}
+		}
+	}
+}
+
+@mixin btn-styles {
+	padding: 15px 30px;
+	text-align: center;
+	display: block;
+}
+
+@mixin card-styles {
+	vertical-align:top;
+	display:inline-block;
+	.content {
+		text-align: center;
+	}
+	.align {
+		width: 100%;
+		max-width: calc(1200px / 3 / 2);
+		text-align: left;
+	}
+}
+
+@mixin single-card-styles {
+	width: 100%;
+	.align {
+		max-width: calc(1200px /  2);
+	}
+}
+
+@mixin graphic-card-styles {
+	.crop{
+		overflow: hidden;
+		height: 100%;
+		width: 100%;
+		max-width: 100%;
+		max-height: 200px;
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+}
+
+@mixin hero-styles {
+	@include full-width;
+	height:calc( 100vh - 120px );
+	margin-top: 100px;
+}
+
+@mixin container-styles {
+	max-width:theme.$view-width;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@mixin even-split-styles {
+	width:calc(50vw - 30px);
+	display:inline-block;
+	vertical-align:top;
+}
+
+@mixin page-styles {
+	box-sizing: border-box;
+}
+
+@mixin three-card-styles {
+	$view-width : theme.$view-width;
+	max-width: calc(#{$view-width} / 3);
+	@include full-width;
+	.align {
+	}
+}
+
+// end base component styles

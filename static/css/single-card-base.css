@@ -1,0 +1,8 @@
+.card.single {
+  width: 100%;
+}
+.card.single .align {
+  max-width: calc(1200px / 2);
+}
+
+/*# sourceMappingURL=single-card-base.css.map */
