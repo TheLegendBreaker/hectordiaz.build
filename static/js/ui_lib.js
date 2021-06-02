@@ -6,6 +6,20 @@ docReady = function(fn) {
 	}
 }
 
+getParentByClass = function(el, className) {
+	let rent = el.parentElement,
+	stop = 0;
+	while(!rent.classList.contains(className)) {
+		console.log(rent);
+		rent = rent.parentElement;
+		if ( stop == 1000 ) {
+			return false;
+		}
+		stop ++;
+	}
+	return rent;
+}
+
 toggleClass = function(el,trgtClss) {
 	if (el.classList.contains(trgtClss)){
 		el.classList.remove(trgtClss);
@@ -48,6 +62,51 @@ getOne = function(slctr) {
 	return false;
 }
 
+var replacement;
+
+allowDrop = function(ev) {
+  ev.preventDefault();
+  ev.stopPropagation();
+}
+
+drag = function(ev) {
+	swp = ev.target;
+	ev.dataTransfer.effectAllowed = 'move';
+	ev.dataTransfer.setData('text/html', swp.innerHTML);
+}
+
+swap = function(swpd, ev, target) { 
+	if (swpd.classList.contains(target)) {
+		swapPriority(swpd,swp);
+		swp.innerHTML = swpd.innerHTML;
+		swpd.innerHTML = ev.dataTransfer.getData('text/html');
+	} else {
+		swpd = getParentByClass(swpd, target);
+		swapPriority(swpd,swp);
+		swp.innerHTML = swpd.innerHTML;
+		swpd.innerHTML = ev.dataTransfer.getData('text/html');
+	}
+}
+updatePriority = function(priorityId, itemId) {
+	console.log('priority.id = '+priorityId+'; item.id= '+itemId+';');
+}
+swapPriority = function(swpd,swp){
+	const form = swpd.firstChild,
+	itemId = form.id,
+	priorityId = swpd.id,
+	swporityId = swp.id,
+	swpItemId = swp.firstChild.id;
+	updatePriority(priorityId, swpItemId);
+	updatePriority(swporityId, itemId);
+}
+drop = function(ev) {
+  ev.preventDefault();
+	let swpd = ev.target;
+	console.log(swpd.innerHTML);
+	if(swp !== swpd) {
+		swap(swpd, ev, 'priority');
+	}
+}
 
 docReady(function(){
 	// toggle modal w/ btn

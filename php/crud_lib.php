@@ -1,4 +1,5 @@
 <?php
+
 function get_all_tags() {
 	// returns all tags
 }
@@ -8,7 +9,7 @@ function get_tag() {
 }
 
 function update_tag() {
-	$result = mysqli_query($link, "UPDATE tag SET label=''".$tag["label"]."' WHERE id = '".$tag["id"]."';", MYSQLI_USE_RESULT);
+	$result = mysqli_query($link, "UPDATE tag SET label='".$tag["label"]."' WHERE id = '".$tag["id"]."';", MYSQLI_USE_RESULT);
 	if($result) {
 		echo "`review_tag.name = time logs` Entry Created. \n";
 		return true;
@@ -23,40 +24,58 @@ function create_tag() {
 }
 
 function delete_tag() {
-	// deletes a tag
-	// returns boolean for successfull creation
 }
 
-function get_items() {
+function get_item($link,$id) {
 	// returns a item
+	$result = mysqli_query($link, "SELECT * FROM item WHERE item.id='".$id."';", MYSQLI_USE_RESULT);
+	if($result) {
+		$row = mysqli_fetch_row($result);
+		//print_r( $row );
+		//
+		$req_item = array(
+			"id" => $row[0],
+			"statusId" => $row[1],
+			"entered" => $row[2],
+			"updated" => $row[3],
+			"desc" => $row[4],
+		);
+
+		return json_encode( $req_item );
+	}
+
+		return false;
 }
 
-function update_item($item) {
-	$result = mysqli_query($link, "UPDATE item SET item=''".$item["item"]."' WHERE id = '".$item["id"]."';", MYSQLI_USE_RESULT);
+function update_item($link,$item) {
+	$result = mysqli_query($link, "UPDATE item SET item='".$item["item"]."' WHERE id = '".$item["id"]."';", MYSQLI_USE_RESULT);
 	if($result) {
-		echo "`review_item.name = time logs` Entry Created. \n";
 		return true;
 	}
 
 		return false;
 }
 
-function create_item($item) {
+function create_item($link,$item) {
 	$result = mysqli_query($link, "INSERT INTO item (updated, item) VALUES (NOW(),'".$item."');", MYSQLI_USE_RESULT);
 	if($result) {
-		echo "`review_item.name = time logs` Entry Created. \n";
 		return true;
 	}
 
 		return false;
 }
 
-function delete_item() {
-	// deletes a item
-	// returns boolean for successfull creation
+function delete_item($link, $id) {
+	$result = mysqli_query($link, "DELETE FROM `item` WHERE item.id='".$id."';", MYSQLI_USE_RESULT);
+	if($result) {
+		echo "item.id= ".$id.". \n delete.";
+		return true;
+	}
+
+		return false;
 }
 
-function get_priorities() {
+function get_priority() {
 	// returns a priority
 }
 
@@ -152,10 +171,6 @@ function get_item_statuses() {
 
 function get_item_status() {
 	// returns a item_status
-}
-
-function get_goal_status() {
-	// returns a goal_status
 }
 
 function get_goal_status() {

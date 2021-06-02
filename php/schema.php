@@ -60,9 +60,11 @@ if($result) {
 
 $result = mysqli_query($link, "CREATE TABLE IF NOT EXISTS item (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	status_id INT NULL,
 	entered TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	updated TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
-	item LONGTEXT NOT NULL);", MYSQLI_USE_RESULT);
+	item LONGTEXT NOT NULL,
+	FOREIGN KEY (status_id) REFERENCES item_status(id));", MYSQLI_USE_RESULT);
 if($result) {
 	echo "`item` Table Created. \n";
 }
@@ -105,12 +107,10 @@ if($result) {
 $result = mysqli_query($link, "CREATE TABLE IF NOT EXISTS backlog_item (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	tag_id INT NOT NULL,
-	status_id INT NOT NULL,
 	item_id INT NOT NULL,
 	entered TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	updated TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
 	FOREIGN KEY (tag_id) REFERENCES tag(id),
-	FOREIGN KEY (status_id) REFERENCES item_status(id),
 	FOREIGN KEY (item_id) REFERENCES item(id));", MYSQLI_USE_RESULT);
 if($result) {
 	echo "`backlog_item` Table Created. \n";

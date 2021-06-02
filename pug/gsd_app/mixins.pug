@@ -272,33 +272,35 @@ mixin iterate(amount)
 		block
 		- iteration+= 1
 
-mixin tagBackLog(amount=30,iValue="tag: the next action that needs doing")
+mixin tagBackLog(amount=30)
 	- var iName="action"
 	- var label
 	- var iteration= 0
 
 	while iteration<amount
-		-iName+=iteration
+		-iName = iName + iteration
 		-label = iName
+		-iValue ="tag"+iteration+": the next action that needs doing"
 
-		form.actions-container.split-em
-			+ btn('|')
+		.priority(id!="priority-" + iteration ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)")
+			form(id!="dev-"+iteration).actions-container.split-em
+				+ btn('|')
 
-			+ textArea(label,iName,iValue).split.three-quarter.sr-label
+				+ textArea(label,iName,iValue)(id!='item'+iteration).split.three-quarter.sr-label
 
-			aside.split.quarter
-				+ labelSelect("status").sr-label
-					- var oName="action"
-					+ optionPart(oName,oValue=oName)
-					- var oName="done"
-					+ optionPart(oName,oValue=oName)
-					- var oName="outcome"
-					+ optionPart(oName,oValue=oName)
-					- var oName="closed"
-					+ optionPart(oName,oValue=oName)
-				time 5/6/21
+				aside.split.quarter
+					+ labelSelect("status").sr-label
+						- var oName="action"
+						+ optionPart(oName,oValue=oName)
+						- var oName="done"
+						+ optionPart(oName,oValue=oName)
+						- var oName="outcome"
+						+ optionPart(oName,oValue=oName)
+						- var oName="closed"
+						+ optionPart(oName,oValue=oName)
+					time 5/6/21
 
-			+ btn('...').vert-lbl
+				+ btn('...').vert-lbl
 
 		-iteration+= 1
 
