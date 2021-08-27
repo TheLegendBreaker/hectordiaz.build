@@ -2,12 +2,18 @@
   vertical-align: top;
   display: inline-block;
 }
+.card .title .align {
+  width: 100%;
+  max-width: calc(1200px / 3 / 2);
+}
 .card .content {
   text-align: center;
 }
-.card .align {
+.card .content.align > :nth-child(1) {
   width: 100%;
-  max-width: calc(1200px / 3 / 2);
+  max-width: calc(( 1200px / 3 / ) - 40px);
+}
+.card .align {
   text-align: left;
 }
 

@@ -104,7 +104,23 @@ $tv : 1900px;
 	filter: blur(5px);
 }
 
+@mixin transform($args) {
+	transform: $args;
+}
+
+@mixin transition($args...) {
+	transition: $args;
+}
+
 // end effects
+// size
+
+@mixin sq($d:100%) {
+	height: $d;
+	width: $d;
+}
+
+// end size
 // position
 
 @mixin pos-rel {
@@ -146,9 +162,25 @@ $tv : 1900px;
 	}
 }
 
+@mixin before-full-width {
+	@include before {
+		@include full-width-abso;
+
+		@content
+	}
+}
+
 @mixin after {
 	&:after {
 		content: '';
+
+		@content
+	}
+}
+
+@mixin after-full-width {
+	@include after {
+		@include full-width-abso;
 
 		@content
 	}

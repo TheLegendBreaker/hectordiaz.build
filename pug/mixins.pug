@@ -7,6 +7,7 @@
 //- style block
 
 mixin pageBaseStyles 
+	// atomize style rules for page base styles
 	style.
 		*{ 
 			box-sizing: border-box; 
@@ -48,7 +49,8 @@ mixin pageBaseStyles
 		}
 		.split-40, .six-four-split figure {
 			max-width: calc(1200px * .35);
-			width: 35%;
+			min-width: 400px;;
+			width: 100%;
 			margin: 0;
 		}
 		.cta-container.stack .btn.cta {
@@ -57,23 +59,38 @@ mixin pageBaseStyles
 		}
 		.tagline {
 			font-size: 2em;
+			margin-top: 0;
 		}
 		.tagline span {
 			font-weight: 500;
 			}
+		.card-container {
+			padding-bottom: 40px;
+		}
 		.card-container + .card-container {
-			padding: 40px 0;
+			padding-top: 40px;
+		}
+		.card-container:nth-last-child(1) {
+			padding-bottom: 0px;
+		}
+		.split {
+			display: inline-block;
+			vertical-align: top;
 		}
 		figure {
 			margin: 0;
 		}
 		.crop {
 			overflow: hidden;
-			max-height: 200px;
+			height: 100%;
+			max-height: 300px;
 		}
 		.crop img {
 			height: auto;
 			width: 100%;
+		}
+		section[id] {
+			margin-bottom: 80px;
 		}
 
 mixin cardBaseStyles
@@ -139,7 +156,7 @@ mixin heroSection(sectionTitle)
 
 mixin logoMark(logoBoxStyles=logoBoxBaseStyles,logoStyles=false)
 	.logo-container(style!=logoBoxStyles)&attributes(attributes)
-		.mark(style="mask:url(hector-diaz-full-stack-web-developer-and-accessibility-specialist-for-hire-logo.svg);-webkit-mask-image:url(hector-diaz-full-stack-web-developer-and-accessibility-specialist-for-hire-logo.svg);mask-size:100%;-webkit-mask-size:100%;position:absolute;top:0;left:0;width:100%;height:100%;")
+		.mark(style="mask:url(hector-diaz-full-stack-web-developer-and-accessiblity-specialist--for-hire-logo.svg);-webkit-mask-image:url(hector-diaz-full-stack-web-developer-and-accessiblity-specialist--for-hire-logo.svg);mask-size:100%;-webkit-mask-size:100%;-webkit-mask-repeat: no-repeat;position:absolute;top:0;left:0;width:100%;height:100%;")
 			.holo-bg(style="background-color:aqua;position:absolute;top:0;left:0;width:100%;height:100%;")
 // end util
 // components
@@ -196,9 +213,9 @@ mixin newcardGraphic(options=false)
 				block
 
 mixin cardBody(title)
-	h2.title
+	h3.title
 		span.align!= title
-	.content
+	.content&attributes(attributes)
 		.align
 			block
 
@@ -206,12 +223,12 @@ mixin cardBody(title)
 // buttons
 
 mixin cta(slug)
-	+a.btn.cta(href=slug)
+	+a.btn.cta(href!= slug)
 		block
 
 mixin contained-cta(slug)
 	.cta.container
-		+cta(href=slug)
+		+cta(slug)
 			block
 
 // end buttons

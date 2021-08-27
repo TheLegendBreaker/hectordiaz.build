@@ -1,21 +1,25 @@
 extends ../layout.pug
+block head
+	link(rel="stylesheet" href="folio-index.css")
+	<script src="https://smtpjs.com/v3/smtp.js"> </script>
+
 block body
 
 	- var cardOptions = {}
 	- cardOptions['cta'] = {'target':'#','message':'CALL TO ACTION'}
 
-	+heroBanner('hero')(class="sr-title container-center-xy")
+	+heroBanner('hero')(class="sr-title")
 		.split-40
 			+ logoMark
 		.split-60
 			+newCard
 				p.tagline
 					strong
-						span Hector Diaz : Web Developer
+						span Hector Diaz : Web Developer,
 						|<br/>
-						|Beautiful Websites
+						|Beautiful Websites,
 						|<br/>
-						|Happy Clients
+						|Happy Clients.
 				+cardBody('Example')
 					p
 						| The teams I join soon find project timelines becoming shorter, and client satisfaction growing.
@@ -33,10 +37,10 @@ block body
 		- cardOptions['src']= '/clients/UnionBaptist_About.png'
 		- cardOptions['alt']= '/clients/UnionBaptist_About.png'
 
-		+newCard.flip.six-four-split
+		+newCard
 			+newcardGraphic(cardOptions)
 			.main
-				+cardBody('Example')
+				+cardBody('Example').align
 					p something that is something when something happened. I don't know, but it sure was something.
 				+cta('#')
 					Hey try this!
@@ -44,7 +48,7 @@ block body
 		+newCard
 			+newcardGraphic(cardOptions)
 			.main
-				+cardBody('Example')
+				+cardBody('Example').align
 					p something that is something when something happened. I don't know, but it sure was something.
 				+cta('#')
 					Hey try this!
@@ -52,7 +56,7 @@ block body
 		+newCard
 			+newcardGraphic(cardOptions)
 			.main
-				+cardBody('Example')
+				+cardBody('Example').align
 					p something that is something when something happened. I don't know, but it sure was something.
 				+cta('#')
 					Hey try this!
@@ -60,10 +64,189 @@ block body
 		+newCard
 			+newcardGraphic(cardOptions)
 			.main
-				+cardBody('Example')
-					p something that is something when something happened. I don't know, but it sure was something.
-				+cta('#')
-					Hey try this!
+				+cardBody('Example<small>10/20</small>')
+					.cta-container.split.half
+						h4 Actions
+						+cta('#').
+							View Production Website
+						+cta('#').
+							View desing in new tab
+
+					.stack.split.half
+						ul
+							h4 Stack
+							li XD, Photoshop
+							li jQery
+							li Pug
+							li Sass
+							li PHP
+
+	+pageSection('Experience')(id="xp")
+
+		+newCard
+			.main
+				+cardBody('Web Developer Intern : HomeCU')
+					p Hied for a 3 month try out internship.
+					ul
+						li Provided day-to-day website support for 100+ nationwide clients.
+						li Became proficient with HomeCU's tools, systems and standards.j
+
+		+newCard
+			.main
+				+cardBody('Web Developer 1 : HomeCU')
+					p In 60 days, I was given a 25% raise and promoted from an intern to Web Developer 1.
+					ul
+						li Worked with clients daily over the phone and email.
+						li Designed mockups.
+						li Researched and implemented new tools to help streamline the web development process.
+						li Problem solved and Innovated new products and features with my team over video meetings, chat, and phone calls.
+
+		+contained-cta('#')
+			p View Resume
+
+		+contained-cta('#')
+			p
+				strong Download Resume
+
+	+pageSection('Stack of Choice')(id="stack")
+
+	+pageSection('Contact')(id="contact")
+
+		form#email.send-email
+			// (method="POST" action="send" enctype="multipart/form-data")
+			p Send me your email and I will get in touch. 
+			label()
+				span.sr-only Send your email
+				input(type='email' name='email')
+			button send
+
+		.send-an-email
+			p Or send me an email and we'll set up a time to meet.
+			a(href="mailto: diazghector87203@gmail.com" target="_blank") hector@hectordiaz.pro
+
+block footer
+	footer
+		+pageSection('Footer')(id="footer")
+			.profile-img-container
+				.crop.round
+					img(src="hector_diaz_web_developer_for_hire_in_boise.jpg" alt="a profile picture of Hector Diaz")
+				.thanks
+					p 
+						| Thanks for taking a look. Check back in as I am always making or doing something new.
+						br
+						br
+						br
+						| Hopefully chat soon,
+						br
+						br
+						strong
+							| Hector Diaz <br/> Web Developer 1.
+
+			.ctas-container
+				a(href="https://linkedin.com/in/hector-g-diaz") View Hector's Linkedin profile
+				a(href="https://make.hectordiaz.pro") View Hector's make blog
+
+			.nav-container
+				+nav('Navigation Menu')
+
+block scripts
+	script.
+		getEmailFormData = function() {
+			// abstract this function further
+			const form = document.getElementById('email'),
+			data = new FormData(form);
+			return (data.get('email') ? data : false);
+		}
+
+		formatNotification = function(data) {
+			// format the form data.
+			let email = {};
+			email['sender'] = data.get('email');
+			email['subject'] = email['sender']+" wants to talk about hiring you.";
+			email['body'] = email['sender']+"  has sent you their email address on <current date and time> and would like to set up a time to chat with you.";
+
+			return email;
+			}
+
+		getAndFormatEmail = function() {
+			const data = getEmailFormData();
+			let email;
+
+			if (data) {
+				return email = formatNotification(data);
+				}
+		}
+
+		addWaitingAnimation = function(input) {
+			input.classList.add('pulse','waiting');
+		}
+
+		removeWaitingAnimation = function(input) {
+			input.classList.remove('pulse','waiting');
+		}
+
+		addSuccessBreadcrumb = function(input) {
+			input.classList.add('success');
+		}
+
+		removeSuccessBreadcrumb = function(input) {
+			input.classList.remove('success');
+		}
+
+		addErrorBreadcrumb = function(input) {
+			input.classList.add('error');
+		}
+
+		removeErrorBreadcrumb = function(input) {
+			input.classList.remove('error');
+		}
+
+		getEmailInput = function() {
+			return document.querySelector('#email input');
+		}
+
+		msgHandler = function(message, input) {
+			removeWaitingAnimation(input);
+			if(  message != "OK" ) {
+					addErrorBreadcrumb(input);
+					alert(message);
+					return;
+				}
+			if(input.classList.contains('error')) {
+					removeErrorBreadcrumb(input);
+				}
+			addSuccessBreadcrumb(input);
+		}
+
+		sendEmail = function(email={},btn) {
+			addWaitingAnimation(btn);
+			Email.send({
+				SecureToken: "907d29e9-397e-4268-b58b-5956fa02e6b0",
+				To: "diazghector87203@gmail.com",
+				From: email.sender,
+				Subject: email.subject,
+				Body: email.body
+			}).then (
+				message => {
+					msgHandler(message, btn)
+				}
+			);
+		}
+
+		emailFormActions = function(email={}) {
+			const submitBtn = document.querySelector('#email button');
+
+			submitBtn.addEventListener('click', (event)=>{
+				event.stopImmediatePropagation();
+				event.preventDefault();
+				email = getAndFormatEmail();
+				sendEmail(email, submitBtn) });
+		}
+
+		emailFormActions();
+		//-const input = getEmailInput();
+		//-addWaitingAnimation(input);
+
 
 block styles
 	+ cardBaseStyles

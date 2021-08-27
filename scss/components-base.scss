@@ -20,7 +20,7 @@
 	top: 0;
 	left: 0;
 	width: 100vw;
-	height: 40px;
+	height: 60px;
 	background: #fff;
 	.container {
 		padding: 15px 30px;
@@ -54,12 +54,20 @@
 @mixin card-styles {
 	vertical-align:top;
 	display:inline-block;
+	.title {
+		.align {
+			width: 100%;
+			max-width: calc(1200px / 3 / 2);
+		}
+	}
 	.content {
 		text-align: center;
+		&.align> :nth-child(1){
+			width: 100%;
+			max-width: calc(( 1200px / 3 / ) - 40px);
+		}
 	}
 	.align {
-		width: 100%;
-		max-width: calc(1200px / 3 / 2);
 		text-align: left;
 	}
 }
@@ -87,8 +95,8 @@
 
 @mixin hero-styles {
 	@include full-width;
-	height:calc( 100vh - 120px );
 	margin-top: 100px;
+	position: relative;
 }
 
 @mixin container-styles {

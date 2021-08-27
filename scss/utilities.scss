@@ -2,7 +2,7 @@
 @use 'mixins';
 @use 'brand';
 
-#Content .sr-only {
+.sr-only {
 	opacity: 0;
 	position: absolute;
 	top: auto;
@@ -159,6 +159,16 @@
 }
 
 // end before after
+// assests/img styles
+
+.crop {
+	// the bluck of these styles are in base styles and therefore inlined on the page.
+	&.round {
+		border-radius: 50%;
+	}
+}
+
+// end assests/img styles
 // components
 
 .button-container {

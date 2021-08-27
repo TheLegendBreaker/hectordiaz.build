@@ -1,0 +1,305 @@
+@use 'mixins';
+// brand 
+
+$accent : #3b55b3;
+$error : rgba( #ff00eb, .3);
+
+// brand 
+// base 
+// element config
+
+a, button, input[type=button], input[type=submit] {
+	cursor: pointer;
+}
+
+a {
+	color: $accent;
+}
+
+button {
+	background: #fff;
+	padding: 15px 30px;
+	border: none;
+}
+
+h3, h4 {
+	margin-top: 0;
+}
+
+ul {
+	margin: 0;
+}
+
+// end element config
+
+#folio {
+	small {
+		font-weight: 500;
+    display: block;
+	}
+	.title .split {
+		padding: 0 30px;
+	}
+	.cta-container {
+		.cta {
+			display: block;
+			padding-bottom: 20px;
+		}
+	}
+}
+
+#xp {
+	.card-container {
+		padding-bottom: 0;
+	}
+}
+
+#contact {
+	&> div.container  > * {
+		margin: 0 0 40px;
+	}
+
+	form.send-email {
+		input {
+			outline: 0;
+			border: 0;
+			border-bottom: solid 1px;
+			border-radius: 0;
+			width: 100%;
+			max-width: 370px;
+			padding: 10px 10px 0;
+			display: block;
+
+			&:focus-within, &:focus {
+				background: #fff;
+			}
+		}
+		button {
+			display: inline-block;
+			margin-top: 15px;
+			@include mixins.transition(box-shadow .3s linear,background .1s linear,transform .1s linear);
+
+			&:hover {
+				box-shadow: 5px 5px 10px #333;
+			}
+			&:active {
+				background: #90a8ff;
+				color: #fff;
+				@include mixins.transform(scale(.98));
+			}
+		}
+	}// end form.send-email
+
+}
+
+#footer {
+	padding:40px 0;
+	@include mixins.pos-rel;
+	@include mixins.before-full-width {
+		background: #fff;
+		z-index: 0;
+		top: 30px;
+	}
+	.container > * {
+		margin: 0 0 40px;
+		@include mixins.pos-rel;
+		z-index: 5;
+		display: inline-block;
+		vertical-align: top;
+	}
+	.profile-img-container {
+		&> * {
+			display: inline-block;
+			vertical-align: top;
+		}
+		.crop {
+			@include mixins.sq(250px);
+		}
+	}
+	.ctas-container {
+		a {
+			display: inline-block;
+			margin: 20px 0;
+			width: 100%;
+		}
+	}
+}
+
+// end base 
+// ui
+
+.success {
+	color: #333;
+	background: rgba(#53c5a6,.3);
+	@include mixins.transition(background .3s linear !important);
+}
+
+.error {
+	color: #333;
+	background: rgba($error,.3);
+	@include mixins.transition(background .3s linear !important);
+
+}
+
+html body {
+	.pulse {
+		box-shadow: 0 0 0 0 rgba($accent,1);
+		transform: scale(1);
+		animation: pulse 2s infinite;
+
+		&.waiting {
+			background: $accent;
+			color: #fff;
+		}
+	}
+}
+
+@keyframes pulse {
+	0%{
+		box-shadow: 0 0 0 0 rgba($accent, .7);
+		@include mixins.transform(scale(.95));
+	}
+
+	70%{
+		box-shadow: 0 0 0 10px rgba($accent, 0);
+		@include mixins.transform(scale(1));
+	}
+
+	100%{
+		box-shadow: 0 0 0 0 rgba($accent, 0);
+		@include mixins.transform(scale(.95));
+	}
+}
+
+// end ui
+// tablet view
+
+@include mixins.tablet {
+	body header#top-bar {
+		height: 40px;
+	}
+
+	#hero {
+		height: calc(100vh - 150px);
+
+		.container {
+			position: absolute;
+			top: 50%;
+			left: auto;
+			@include mixins.transform(translatey(-50%));
+			text-align: center;
+
+			&>* {
+				text-align: left;
+			}
+
+		}
+	}
+
+	#folio {
+
+		.card {
+			position: relative;
+				&>* {
+					display: inline-block;
+					vertical-align: top;
+				}
+			figure {
+				width: 31vw;
+				max-width: calc(1200px / 3 - 30px);
+				position: relative;
+				left: 95%;
+				transform: translatex(-100%);
+			}
+			.main {
+				width: 61vw;
+				max-width: calc(1200px * .61 - 30px);
+				padding: 0 15px;
+				position: absolute;
+				top: 50%;
+				left: 0;
+				@include mixins.transform(translatey(-50%));
+				.split.half {
+					width: 50%;
+				}
+			}
+		}
+	}
+
+	#xp {
+		.card-container:nth-child(2) {
+			padding-bottom: 20px;
+		}
+	}
+
+	#footer {
+		.profile-img-container {
+			width: 100%;
+			.thanks {
+				width: calc(100% - 250px);
+				padding-left: 30px;
+				left: auto;
+				top: 50%;
+				position: absolute;
+				@include mixins.transform(translateY(-50%));
+			}
+		}
+		.crop {
+			@include mixins.sq(250px);
+		}
+		.ctas-container {
+			padding: 30px 50px;
+		}
+	}
+}
+
+// end tablet view
+// laptop view
+
+@include mixins.laptop {
+	#hero {
+		.logo-container {
+			margin: auto;
+		}
+	}
+
+	#folio {
+		.card {
+
+			h3 {
+				margin-bottom: 30px;
+			}
+
+			.main {
+			}
+		}
+	}
+
+	#contact {
+		div.container {
+			&> * {
+				display: inline-block;
+				vertical-align: top;
+				width: 50%;
+				margin: 0;
+			}
+		}
+	}
+
+	#footer {
+		.profile-img-container {
+			max-width: 50%;
+		}
+
+		.ctas-container, .nav-container {
+			max-width: 20%;
+			margin: 1em 0;
+		}
+
+		.ctas-container {
+			padding: 0px 30px;
+		}
+	}
+}
+
+// end laptop view
